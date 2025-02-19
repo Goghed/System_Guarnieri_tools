@@ -1,0 +1,52 @@
+{% extends 'clientes/base.html' %}
+
+{% block title %}Dashboard - Guarni System{% endblock %}
+
+{% block content %}
+    <div class="welcome-message">
+        <h1>Bem-vindo, {{ user_name }}</h1>
+        <p>Aqui você pode acompanhar todas as métricas importantes.</p>
+    </div>
+
+    <div class="chart-container">
+        <div class="chart" id="chart1">
+            <h2>OS Abertas Mensal</h2>
+            <canvas id="myChart1"></canvas>
+        </div>
+        <div class="chart" id="chart2">
+            <h2>Distribuição de OS</h2>
+            <canvas id="myChart2"></canvas>
+        </div>
+        <div class="chart" id="chart3">
+            <h2>OS Processadas</h2>
+            <canvas id="myChart3"></canvas>
+        </div>
+    </div>
+
+    <!-- Tabela de Veículos -->
+    <div class="vehicle-table">
+        <h2>Informações Logística</h2>
+        <div class="vehicle-grid">
+            <!-- Cabeçalho da Tabela -->
+            <div class="vehicle-row header">
+                <div class="vehicle-cell">Técnico</div>
+                <div class="vehicle-cell">Auxiliar</div>
+                <div class="vehicle-cell">Modelo</div>
+                <div class="vehicle-cell">Placa</div>
+                <div class="vehicle-cell">KM Percorridos</div>
+                <div class="vehicle-cell">Cliente</div>
+            </div>
+
+            <!-- Linhas da tabela geradas dinamicamente -->
+            {% for veiculo in veiculos %}
+            <div class="vehicle-row">
+                <div class="vehicle-cell">{{ veiculo.nome }}</div>
+                <div class="vehicle-cell">{{ veiculo.placa }}</div>
+                <div class="vehicle-cell">{{ veiculo.motorista }}</div>
+                <div class="vehicle-cell">{{ veiculo.km_percorridos }}</div>
+                <div class="vehicle-cell">{{ veiculo.localizacao }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

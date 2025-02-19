@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Carregando o arquivo CSS -->
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <div class="login-container">
+        <!-- Logo da empresa -->
+        <img src="{% static 'images/logo.png' %}" alt="Logo da Empresa" class="logo">
+
+        <h1>Guarnieri Sistemas de Segurança</h1>
+
+        <!-- Mensagem de erro -->
+        {% if form.errors %}
+            <div class="error">
+                Usuário ou senha incorretos. Tente novamente.
+            </div>
+        {% endif %}
+
+        <!-- Formulário de login -->
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Usuário" required>
+            <input type="password" name="password" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+
+    <!-- Carregando o arquivo JavaScript -->
+    <script src="{% static 'js/login.js' %}"></script>
+</body>
+</html>

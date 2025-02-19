@@ -1,0 +1,97 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Fundo preto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container do login */
+.login-container {
+    background-color: #030303;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Título do login */
+.login-container h1 {
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+/* Campos de entrada */
+.login-container input {
+    width: 90%; /* Reduzindo a largura dos campos */
+    padding: 8px; /* Reduzindo o padding */
+    margin: 10px 0;
+    border: 2px solid #ffcc00; /* Borda amarela */
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.login-container input:focus {
+    border-color: #ffcc00; /* Mantém a borda amarela ao focar */
+    outline: none;
+}
+
+/* Botão de login */
+.login-container button {
+    width: 50%; /* Reduzindo a largura do botão */
+    padding: 8px; /* Reduzindo o padding */
+    margin-top: 10px;
+    background-color: #ffcc00; /* Botão amarelo */
+    color: #000; /* Texto preto */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: #e6b800; /* Amarelo mais escuro ao passar o mouse */
+}
+
+/* Mensagem de erro */
+.error {
+    color: red;
+    margin-bottom: 10px;
+}
+
+/* Logo */
+.logo {
+    width: 200px;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+}
+
+/* Animação de fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animação de bounce */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}

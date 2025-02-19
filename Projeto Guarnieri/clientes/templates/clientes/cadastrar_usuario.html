@@ -1,0 +1,59 @@
+{% extends 'clientes/base.html' %}
+
+{% block content %}
+<div class="form-container">
+    <div class="card-header">
+        <h2>Cadastrar Usuário</h2>
+    </div>
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <!-- Campos First Name e Last Name lado a lado -->
+        <div class="form-row">
+            <div class="input-group">
+                <label for="first_name">First Name</label>
+                {{ form.first_name }}
+            </div>
+            
+            <div class="input-group">
+                <label for="last_name">Last Name</label>
+                {{ form.last_name }}
+            </div>
+        </div>
+
+        <!-- Campo Username -->
+        <div class="input-group">
+            <label for="username">Username</label>
+            {{ form.username }}
+        </div>
+
+        <!-- Campo Password com instrução de senha forte -->
+        <div class="input-group">
+            <label for="password">Password</label>
+            {{ form.password }}
+            <small>Use uma combinação de letras, números e caracteres especiais para criar uma senha forte.</small>
+        </div>
+
+        <!-- Foto de Perfil -->
+        <div class="photo-container">
+            <img src="{% if user.profile.avatar %}{{ user.profile.avatar.url }}{% else %}/static/images/default-avatar.png{% endif %}" alt="Foto de perfil" class="profile-photo" id="profilePhoto">
+        </div>
+        
+        <div class="upload-container">
+            <button type="button" class="upload-btn" id="uploadBtn">Upload</button>
+            <button type="button" class="upload-btn" id="removeBtn">Remover Foto</button>
+        </div>
+
+        <!-- Botões de Salvar, Atualizar, Cancelar -->
+        <div class="button-container">
+            <button type="submit" class="save-btn">Salvar</button>
+            <button type="button" class="update-btn">Atualizar</button>
+            <button type="button" class="cancel-btn" onclick="window.location.href='{% url 'dashboard' %}'">Cancelar</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+
+

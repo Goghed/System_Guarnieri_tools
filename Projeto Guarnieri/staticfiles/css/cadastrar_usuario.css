@@ -1,0 +1,105 @@
+/* Aumentando tamanho das fontes e campos */
+body {
+    font-size: 16px;  /* Aumentando o tamanho da fonte base */
+}
+
+.form-container {
+    font-size: 18px; /* Tamanho maior para o formulário */
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;  /* Aumentando a distância entre os campos */
+}
+
+.input-group {
+    flex: 1;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+/* Estilo dos campos com uma linha amarela */
+input[type="text"], input[type="password"], input[type="email"], input[type="file"] {
+    width: 100%;
+    padding: 10px 5px;  /* Menos padding para manter o design mais clean */
+    margin-top: 10px;
+    font-size: 18px; /* Aumentando o tamanho da fonte dentro dos campos */
+    border: none; /* Removendo a borda */
+    border-bottom: 2px solid #FFD700; /* Linha amarela na parte inferior */
+    background-color: transparent; /* Removendo fundo */
+    color: #333;
+    outline: none;  /* Removendo o contorno ao focar */
+}
+
+/* Mudança de cor da linha ao focar no campo */
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+    border-bottom: 2px solid #00FF00; /* Linha verde ao focar no campo */
+}
+
+/* Botões */
+button {
+    padding: 15px 30px; /* Aumentando o tamanho dos botões */
+    font-size: 18px; /* Aumentando o tamanho da fonte do botão */
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button.save-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+button.update-btn {
+    background-color: #ccc;
+    color: #333;
+}
+
+button.cancel-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* Foto de perfil */
+.photo-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-photo {
+    width: 150px; /* Aumentando o tamanho da foto */
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.upload-container {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.upload-btn {
+    background-color: #008CBA;
+    color: white;
+    padding: 15px 30px; /* Botões maiores */
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.upload-btn:hover {
+    opacity: 0.9;
+}
+
+/* Alinhar botões Salvar, Atualizar e Cancelar */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;  /* Aumentando o espaçamento entre os botões */
+}

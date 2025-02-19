@@ -1,0 +1,1 @@
+web: gunicorn projeto_guarnieri.wsgi --log-file -
