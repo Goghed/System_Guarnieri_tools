@@ -79,7 +79,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'default': dj_database_url.config(default='postgres://localhost')
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'edcarlos$default',
+        'USER': 'edcarlos',
+        'PASSWORD': 'Goghed20@22111987',
+        'HOST': 'edcarlos.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
     }
 }
 
