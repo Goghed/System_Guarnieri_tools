@@ -35,9 +35,9 @@ class CadastroUsuarioForm(forms.Form):
     
 
 class UsuarioForm(forms.ModelForm):
-    senha = forms.CharField(widget=forms.PasswordInput)
-    confirmar_senha = forms.CharField(widget=forms.PasswordInput)
-    foto_perfil = forms.ImageField(required=False)  # Adicionando o campo de upload de foto
+    senha = forms.CharField(widget=forms.PasswordInput, required=False)
+    confirmar_senha = forms.CharField(widget=forms.PasswordInput, required=False)
+    foto_perfil = forms.ImageField(required=False)  # Campo para upload da foto
 
     class Meta:
         model = User
@@ -52,3 +52,21 @@ class UsuarioForm(forms.ModelForm):
             self.add_error('confirmar_senha', "As senhas não coincidem.")
 
         return cleaned_data
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+
+        # Se uma senha foi informada, setamos corretamente
+        if self.cleaned_data["senha"]:
+            user.set_password(self.cleaned_data["senha"])
+
+        if commit:
+            user.save()
+            # Salvar a foto no Profile
+            if "foto_perfil" in self.cleaned_data and self.cleaned_data["foto_perfil"]:
+                profile, created = Profile.objects.get_or_create(user=user)
+                profile.avatar = self.cleaned_data["foto_perfil"]
+                profile.save()
+
+        return user
+

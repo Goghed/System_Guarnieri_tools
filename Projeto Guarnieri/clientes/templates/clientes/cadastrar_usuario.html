@@ -31,16 +31,20 @@
         <!-- Campo Password com instrução de senha forte -->
         <div class="input-group">
             <label for="password">Password</label>
-            {{ form.password }}
+            {{ form.senha }}
             <small>Use uma combinação de letras, números e caracteres especiais para criar uma senha forte.</small>
         </div>
 
         <!-- Foto de Perfil -->
         <div class="photo-container">
-            <img src="{% if user.profile.avatar %}{{ user.profile.avatar.url }}{% else %}/static/images/default-avatar.png{% endif %}" alt="Foto de perfil" class="profile-photo" id="profilePhoto">
+            <img id="profilePhoto" 
+                 src="{% if user.profile.avatar %}{{ user.profile.avatar.url }}{% else %}/static/images/default-avatar.png{% endif %}" 
+                 alt="Foto de perfil" class="profile-photo">
         </div>
         
+        <!-- Upload de Foto -->
         <div class="upload-container">
+            <input type="file" id="id_foto_perfil" name="foto_perfil" accept="image/*" style="display: none;">
             <button type="button" class="upload-btn" id="uploadBtn">Upload</button>
             <button type="button" class="upload-btn" id="removeBtn">Remover Foto</button>
         </div>
@@ -53,7 +57,7 @@
         </div>
     </form>
 </div>
+
+<script src="{% static 'js/cadastrar_usuario.js' %}"></script>
+
 {% endblock %}
-
-
-

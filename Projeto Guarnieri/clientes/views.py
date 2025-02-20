@@ -57,17 +57,30 @@ def logout_view(request):
 
 @login_required
 def cadastrar_usuario(request):
-    if request.method == 'POST':
-        form = UsuarioForm(request.POST, request.FILES)
-        if form.is_valid():
-            user = form.save()
-            return redirect('dashboard')
-    else:
-        form = UsuarioForm()
-
-    # Obter nome e foto do usuário logado
     user = request.user
     profile, created = Profile.objects.get_or_create(user=user)
+
+    if request.method == 'POST':
+        form = UsuarioForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            user = form.save(commit=False)
+
+            # Se uma nova senha foi fornecida, precisamos criptografá-la
+            if form.cleaned_data["senha"]:
+                user.set_password(form.cleaned_data["senha"])
+
+            user.save()
+
+            # Atualizar a foto de perfil, se uma nova imagem foi enviada
+            if "foto_perfil" in request.FILES:
+                profile.avatar = request.FILES["foto_perfil"]
+                profile.save()
+
+            return redirect('dashboard')
+
+    else:
+        form = UsuarioForm(instance=user)
+
     avatar_url = profile.avatar.url if profile.avatar else 'images/avatars/default-avatar.jpg'
 
     context = {
@@ -77,3 +90,4 @@ def cadastrar_usuario(request):
     }
 
     return render(request, 'clientes/cadastrar_usuario.html', context)
+
